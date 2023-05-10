@@ -1,5 +1,4 @@
-let container = document.createElement('div');
-let randomColor = Math.floor(Math.random()*16777215).toString(16);
+let container = document.createElement('div');                              
 
 container.style.display = 'flex';
 container.style.flexWrap = 'wrap';
@@ -9,24 +8,42 @@ document.body.appendChild(container);
 container.style.margin = 'auto';
 container.style.padding = '10px';
 
-checkerBoard();
+makeRandomBoard();
+
+function getRandomColor() {
+    let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    return randomColor;
+}
+
+
+function makeRandomBoard() {
+    for (let i = 0; i < 64; i++) {
+        let randomSquare = document.createElement('div');
+        randomSquare.style.height = '12.5%';
+        randomSquare.style.width = '12.5%';
+        randomSquare.style.backgroundColor = getRandomColor();
+
+        container.appendChild(randomSquare);
+    }
+}
+
+
 
 function makeRedSquare() {
     let div = document.createElement('div');
     div.style.height = '12.5%';
     div.style.width = '12.5%';
     div.style.backgroundColor = 'red'; 
-    //div.style.border = '1px solid red';
+    
     container.appendChild(div);
 }
-
 
 function makeBlackSquare() {
     let div = document.createElement('div');
     div.style.height = '12.5%';
     div.style.width = '12.5%';
     div.style.backgroundColor = 'black'; 
-    //div.style.border = '1px solid black';
+    
     container.appendChild(div);
 }
 
